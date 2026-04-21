@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&family=Chocolate+Classical+Sans&display=swap');
+
+:root {
+    /* Nordic Color Palette */
+    --nordic-bg: #f8f9fa;
+    --nordic-surface: #ffffff;
+    --nordic-text: #2d3436;
+    --nordic-text-muted: #636e72;
+    --nordic-primary: #49925f;
+    /* Forest green */
+    --nordic-secondary: #7f8c8d;
+    /* Warm gray */
+    --nordic-accent: #d4a574;
+    /* Warm sand */
+    --nordic-success: #478969;
+    /* Sage green */
+    --nordic-warning: #e9c46a;
+    /* Soft gold */
+    --nordic-danger: #c17767;
+    /* Muted terracotta */
+    --nordic-border: #e9ecef;
+
+    /* Enhanced shadows for better section distinction */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.15);
+    --shadow-btn: 0 3px 10px rgba(0, 0, 0, 0.15);
+
+    /* Radius for soft, rounded feel */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+}
+
+body {
+    background-color: var(--nordic-bg);
+    color: var(--nordic-text);
+    font-family: 'Chiron GoRound TC', sans-serif;
+    line-height: 1.6;
+}
+
+/* Typography - Soft and elegant */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+    color: var(--nordic-text);
+    letter-spacing: -0.02em;
+}
+
+p {
+    color: var(--nordic-text-muted);
+}
+
+/* Global Card Style - Soft and airy */
+.card {
+    background: var(--nordic-surface);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.card-img-top {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Buttons - Soft and inviting */
+.btn {
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: all 0.25s ease;
+    box-shadow: var(--shadow-btn);
+}
+
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+    background-color: var(--nordic-primary);
+    color: #fff;
+    box-shadow: 0 3px 12px rgba(74, 124, 89, 0.35);
+}
+
+.btn-primary:hover {
+    background-color: #3d6a4a;
+    color: #fff;
+    box-shadow: 0 5px 18px rgba(74, 124, 89, 0.45);
+}
+
+.btn-secondary {
+    background-color: var(--nordic-secondary);
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #6b7b7c;
+    color: #fff;
+}
+
+.btn-success {
+    background-color: var(--nordic-success);
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #6a9c84;
+    color: #fff;
+}
+
+.btn-warning {
+    background-color: var(--nordic-warning);
+    color: var(--nordic-text);
+}
+
+.btn-warning:hover {
+    background-color: #d4b058;
+}
+
+.btn-danger {
+    background-color: var(--nordic-danger);
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #a86355;
+    color: #fff;
+}
+
+.btn-dark {
+    background-color: var(--nordic-text);
+    color: #fff;
+}
+
+.btn-dark:hover {
+    background-color: #1a1e1f;
+    color: #fff;
+}
+
+.btn-light {
+    background-color: var(--nordic-surface);
+    color: var(--nordic-text);
+    border: 1px solid var(--nordic-border);
+}
+
+.btn-light:hover {
+    background-color: var(--nordic-bg);
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    border: 1.5px solid var(--nordic-primary);
+    color: var(--nordic-primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--nordic-primary);
+    color: #fff;
+}
+
+/* Inputs - Clean and soft */
+.form-control,
+.form-select {
+    background-color: var(--nordic-surface);
+    border: 1.5px solid var(--nordic-border);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    font-family: 'Chiron GoRound TC', sans-serif;
+    transition: all 0.2s ease;
+    color: var(--nordic-text);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--nordic-primary);
+    box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.12);
+    outline: none;
+    background-color: var(--nordic-surface);
+}
+
+.form-control::placeholder {
+    color: #adb5bd;
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--nordic-text);
+    margin-bottom: 0.5rem;
+}
+
+/* Navbar - Light and airy */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--nordic-border);
+    padding: 1rem 1.5rem;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    color: var(--nordic-text);
+}
+
+.nav-link {
+    color: var(--nordic-text-muted);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--nordic-primary);
+    background-color: rgba(74, 124, 89, 0.08);
+}
+
+/* Badges - Soft pills */
+.badge {
+    border-radius: var(--radius-xl);
+    padding: 0.35em 0.75em;
+    font-weight: 500;
+    border: none;
+}
+
+.badge.bg-primary {
+    background-color: var(--nordic-primary) !important;
+}
+
+.badge.bg-success {
+    background-color: var(--nordic-success) !important;
+}
+
+.badge.bg-warning {
+    background-color: var(--nordic-warning) !important;
+    color: var(--nordic-text);
+}
+
+.badge.bg-danger {
+    background-color: var(--nordic-danger) !important;
+}
+
+/* Alerts - Soft and rounded */
+.alert {
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+}
+
+.alert-success {
+    background-color: rgba(129, 178, 154, 0.15);
+    color: #3d6a4a;
+}
+
+.alert-warning {
+    background-color: rgba(233, 196, 106, 0.2);
+    color: #8a6914;
+}
+
+.alert-danger {
+    background-color: rgba(193, 119, 103, 0.15);
+    color: #8a4a3b;
+}
+
+.alert-info {
+    background-color: rgba(74, 124, 89, 0.1);
+    color: var(--nordic-primary);
+}
+
+/* Modal - Soft and centered */
+.modal-content {
+    border: none;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--nordic-border);
+    padding: 1.25rem 1.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--nordic-border);
+    padding: 1rem 1.5rem;
+}
+
+/* Tables - Clean lines */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table thead th {
+    background-color: var(--nordic-bg);
+    border-bottom: 2px solid var(--nordic-border);
+    color: var(--nordic-text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding: 1rem;
+}
+
+.table tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--nordic-border);
+    vertical-align: middle;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(74, 124, 89, 0.03);
+}
+
+/* Dropdown - Soft shadow */
+.dropdown-menu {
+    border: 1px solid var(--nordic-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    padding: 0.5rem;
+}
+
+.dropdown-item {
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 1rem;
+    transition: all 0.15s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(74, 124, 89, 0.08);
+    color: var(--nordic-primary);
+}
+
+/* Progress bars */
+.progress {
+    height: 8px;
+    border-radius: var(--radius-xl);
+    background-color: var(--nordic-border);
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--nordic-primary);
+    border-radius: var(--radius-xl);
+}
+
+/* Pagination */
+.page-link {
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--nordic-text-muted);
+    margin: 0 2px;
+    padding: 0.5rem 0.875rem;
+}
+
+.page-link:hover {
+    background-color: rgba(74, 124, 89, 0.08);
+    color: var(--nordic-primary);
+}
+
+.page-item.active .page-link {
+    background-color: var(--nordic-primary);
+    color: #fff;
+}
+
+/* Scrollbar - Subtle */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--nordic-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ced4da;
+    border-radius: var(--radius-xl);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #adb5bd;
+}
+
+/* List groups */
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid var(--nordic-border);
+    padding: 1rem 1.25rem;
+    transition: background-color 0.15s ease;
+}
+
+.list-group-item:first-child {
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.list-group-item:last-child {
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    border-bottom: none;
+}
+
+.list-group-item:hover {
+    background-color: rgba(74, 124, 89, 0.03);
+}
+
+/* Tooltip */
+.tooltip-inner {
+    background-color: var(--nordic-text);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.75rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--nordic-surface);
+    border-top: 1px solid var(--nordic-border);
+}
+
+/* Selection highlight */
+::selection {
+    background-color: rgba(74, 124, 89, 0.2);
+    color: var(--nordic-text);
+}
+
+/* Utility classes for this theme */
+.bg-nordic {
+    background-color: var(--nordic-bg);
+}
+
+.text-nordic-primary {
+    color: var(--nordic-primary);
+}
+
+.text-nordic-muted {
+    color: var(--nordic-text-muted);
+}
+
+.rounded-nordic {
+    border-radius: var(--radius-lg);
+}
+
+.shadow-nordic {
+    box-shadow: var(--shadow-md);
+}

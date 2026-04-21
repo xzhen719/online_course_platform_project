@@ -1,0 +1,28 @@
+# === IDE ===
+.idea/
+.vscode/
+*.iml
+
+# === Java / Maven ===
+*.class
+target/
+
+# === Node.js ===
+node_modules/
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Environment / Secrets ===
+.env
+backend/.env
+frontend/.env
+
+# === Spring Boot config with real secrets ===
+application.properties
+application-local.properties
+
+# === Uploaded files (keep directory structure, ignore contents) ===
+uploads/*
+!uploads/.gitignore
