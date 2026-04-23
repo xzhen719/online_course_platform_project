@@ -79,6 +79,8 @@
 - **Maven** (3.9+) — 或使用專案內附的 Maven wrapper (`mvnw`)
 - **Ngrok** (用於開發環境接收綠界金流回傳) — [下載](https://ngrok.com/)
 
+> **其他說明**：專案中上傳的圖片會儲存於根目錄的 `uploads/` 資料夾。
+
 ---
 
 ## Installation 本地端安裝與執行
@@ -86,8 +88,8 @@
 ### 1. 複製專案 (Clone the repo)
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/OCP_project.git
-cd OCP_project
+git clone https://github.com/xzhen719/online_course_platform_project.git
+cd online_course_platform_project
 ```
 
 ### 2. 設定 MySQL 資料庫
