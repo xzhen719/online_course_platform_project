@@ -21,6 +21,7 @@ public class EmailService {
     private String fromEmail;
 
     @Async
+    // 非同步, 使用者先收到Response, 再寄送郵件.
     public void sendPasswordResetEmail(String toEmail, String token) {
         // Adjust this URL to match your Frontend Route
         String resetLink = "http://localhost:5173/reset-password?token=" + token;
