@@ -76,6 +76,7 @@ public class SecurityConfig {
 
                         // 5. Static Files (Course Images)
                         .requestMatchers(HttpMethod.GET, "/uploads/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/images/**").permitAll()
 
                         // 6. Everything else requires login (check if SecurityContext has auth)
                         .anyRequest().authenticated())
