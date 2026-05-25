@@ -115,12 +115,14 @@ copy application.properties.example application.properties
 
 | 欄位 (Key) | 說明與取得方式 |
 |-----|----------------|
+| `DB_HOST` | MySQL 主機位置 (預設為 `localhost`，若使用 Docker 則為 `db`) |
+| `DB_PORT` | MySQL 連接埠 (預設為 `3306`) |
 | `DB_PASSWORD` | 你在步驟 2 中欲設定的 MySQL 密碼 |
 | `JWT_SECRET` | 任意隨機長字串（如：`MySecretKey12345!@#`） |
 | `ECPAY_HASH_KEY` | [綠界測試環境](https://www.ecpay.com.tw/) — 測試值為：`5294y06JbISpM5x9` |
 | `ECPAY_HASH_IV` | 綠界測試環境 — 測試值為：`v77hoKGq4kWxNNIS` |
 | `MAIL_USERNAME` | 你的 Gmail 地址 |
-| `MAIL_PASSWORD` | Gmail 應用程式密碼 ([取得教學](https://support.google.com/accounts/answer/185833)) |
+| `MAIL_PASSWORD` | Gmail 應用程式密碼 ([取得教學](https://myaccount.google.com/apppasswords)) |
 | `OPENROUTER_API_KEY` | 到 [openrouter.ai](https://openrouter.ai/) 註冊並取得 Keys |
 
 ### 4. 配置前端 (Configure Frontend)
@@ -130,7 +132,7 @@ cd frontend
 copy .env.example .env
 ```
 
-開啟 `.env` 並填入你的 API Ninjas key（可至 [api-ninjas.com](https://api-ninjas.com/) 免費申請）。
+開啟 `.env` 並填入你的 API Ninjas key（可至 [api-ninjas.com](https://api-ninjas.com/) 免費申請），以及後端 API 的網址 `VITE_API_URL`（預設為 `http://localhost:8080`）。
 
 ### 5. 啟動後端 (Run Backend)
 
@@ -160,6 +162,18 @@ ngrok http 8080
 ```
 
 複製產生的網址（例如 `https://xxxx.ngrok-free.dev`），並更新後端 `application.properties` 中的 `ecpay.backend-url`。
+
+---
+
+## 透過 Docker 快速啟動 (Docker Deployment)
+
+如果你已經安裝了Docker，可直接透過以下指令一鍵啟動整個專案（包含資料庫、後端、前端）：
+
+```bash
+docker compose up -d --build
+```
+
+> **注意**：啟動前請確保你已經將各資料夾(frontend, backend, 專案根目錄)中的 `.env.example` 與 `application.properties.example` 複製為 `.env` 與 `application.properties`，並填寫好必填的金鑰（如ECPay、Gmail密碼、OpenRouter API Key等）。
 
 ---
 

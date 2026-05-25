@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # 1. The Database Service
+  db:
+    image: mysql:8.0
+    container_name: ocp-mysql
+    restart: always
+    environment:
+      # Tells the MySQL image to automatically create the database and user!
+      MYSQL_DATABASE: online_course_platform
+      MYSQL_USER: ocp_user
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      # We map a volume so that if the container restarts, your data isn't wiped out
+      - db_data:/var/lib/mysql
+    networks:
+      - ocp-network
+
+  # 2. The Backend Service
+  backend:
+    build:
+      # Points to backend source code directory
+      context: ./backend
+      # Specifies the Dockerfile used to build the image
+      dockerfile: Dockerfile
+    container_name: ocp-backend
+    restart: always
+    ports:
+      # Map the container's 8080 port to your laptop's 8080 port
+      - "8080:8080"
+    environment:
+      # Inject the database container name (Docker Internal DNS)
+      DB_HOST: db
+      DB_PORT: 3306
+    depends_on:
+      # start db container first before backend container
+      - db
+    networks:
+      - ocp-network
+
+  # 3. The Frontend Service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ocp-frontend
+    restart: always
+    ports:
+      # Map the Nginx container's port 80 to your laptop's port 5173
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - ocp-network
+
+# Define the global persistent volume for the database (managed by Docker)
+volumes:
+  db_data:
+
+    # Define the private network for the containers to talk to each other
+    # This creates an isolated virtual bridge network for the containers, allowing them to communicate using the service name.
+networks:
+  ocp-network:

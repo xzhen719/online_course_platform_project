@@ -86,7 +86,7 @@ onMounted(async() => {
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img
-                      src="`/campaign/campaign1.png`"
+                      src="/campaign/campaign1.png"
                       alt="campaign1"
                       class="d-block w-100"
                       style="height: 400px"
@@ -94,7 +94,7 @@ onMounted(async() => {
                   </div>
                   <div class="carousel-item">
                     <img
-                      src="`/campaign/campaign2.jpg`"
+                      src="/campaign/campaign2.jpg"
                       alt="campaign2"
                       class="d-block w-100"
                       style="height: 400px"
@@ -102,7 +102,7 @@ onMounted(async() => {
                   </div>
                   <div class="carousel-item">
                     <img
-                      src="`/campaign/campaign3.jpg`"
+                      src="/campaign/campaign3.jpg"
                       alt="campaign3"
                       class="d-block w-100"
                       style="height: 400px"
