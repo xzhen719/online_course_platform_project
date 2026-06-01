@@ -20,7 +20,9 @@ jobs:
 
     - name: Run Tests with JaCoCo Coverage
       working-directory: ./backend
-      run: ./mvnw test -Dtest="!*ApplicationTests"
+      run: |
+        chmod +x mvnw
+        ./mvnw test -Dtest="!*ApplicationTests"
 
     - name: Upload JaCoCo Coverage Report
       uses: actions/upload-artifact@v4
