@@ -1,0 +1,31 @@
+name: Java CI with Maven and JaCoCo
+
+on:
+  push:
+    branches: [ "**" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Run Tests with JaCoCo Coverage
+      working-directory: ./backend
+      run: ./mvnw test -Dtest="!*ApplicationTests"
+
+    - name: Upload JaCoCo Coverage Report
+      uses: actions/upload-artifact@v4
+      if: always() # Upload report even if some tests fail
+      with:
+        name: jacoco-coverage-report
+        path: backend/target/site/jacoco/
+        retention-days: 14
