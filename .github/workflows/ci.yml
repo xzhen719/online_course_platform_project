@@ -39,12 +39,12 @@ jobs:
         chmod +x mvnw
         ./mvnw test -Dtest="!*ApplicationTests"
 
-    - name: Upload JaCoCo Coverage Report
+    - name: Upload Test Reports
       uses: actions/upload-artifact@v4
       if: steps.run-tests.outcome == 'success' || steps.run-tests.outcome == 'failure'
       with:
-        name: jacoco-coverage-report
-        path: backend/target/site/jacoco/
+        name: surefire-test-reports
+        path: backend/target/surefire-reports/
         retention-days: 14
 
   # Job 2: E2E browser tests (heavy)
