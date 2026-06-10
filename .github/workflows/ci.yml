@@ -39,13 +39,21 @@ jobs:
         chmod +x mvnw
         ./mvnw test -Dtest="!*ApplicationTests"
 
-    - name: Upload Test Reports
+    - name: Upload Surefire Reports
+      if: always()
       uses: actions/upload-artifact@v4
-      if: steps.run-tests.outcome == 'success' || steps.run-tests.outcome == 'failure'
       with:
-        name: surefire-test-reports
-        path: backend/target/surefire-reports/
-        retention-days: 14
+        name: surefire-reports
+        path: backend/target/surefire-reports
+        if-no-files-found: warn
+
+    - name: Upload JaCoCo Report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: jacoco-report
+        path: backend/target/site/jacoco
+        if-no-files-found: warn
 
   # Job 2: E2E browser tests (heavy)
   # Only runs on Pull Requests — not on push to main (already validated)
@@ -65,7 +73,7 @@ jobs:
       - name: Wait for Backend Setup
         run: |
           echo "Waiting for backend to start..."
-          timeout 120 bash -c 'while ! curl -s http://localhost:8080/v3/api-docs > /dev/null; do sleep 5; done'
+          timeout 120 bash -c 'while ! curl -sf http://localhost:8080/v3/api-docs > /dev/null; do sleep 5; done'
           echo "Backend is ready!"
 
       - name: Set up Node.js
