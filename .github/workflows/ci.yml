@@ -64,6 +64,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Create Dummy application.properties for E2E
+        working-directory: ./backend/src/main/resources
+        run: |
+          cp application.properties.example application.properties
+          sed -i 's/${YOUR_JWT_SECRET_HERE}/DummySecretKeyForE2ETestsThatIsLongEnoughToWork/g' application.properties
+
       - name: Start Full Stack with Docker Compose
         env:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
