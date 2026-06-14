@@ -12,15 +12,17 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // Map any request that starts with "/uploads/**" to physical file path
-        // "file:/C:Users/.../uploads/" (URL to Disk path)
+        // Map any request that starts with "/uploads/**" to physical file path.
+        // Use .toUri().toString() to guarantee a correctly formatted RFC 8089 URI
+        // that works on both Windows (file:///C:/...) and Linux/Docker (file:///app/...).
+        // Manual concatenation ("file:/" + path) produces "file://app/uploads/" on Linux,
+        // where Spring Boot misinterprets "app" as a network hostname, causing a 500 error.
 
-        Path uploadDir = Paths.get("uploads");
-        // converts above relative path to absolute path.
-        String uploadPath = uploadDir.toFile().getAbsolutePath();
+        Path uploadDir = Paths.get("uploads").toAbsolutePath().normalize();
+        String uploadUri = uploadDir.toUri().toString();
 
         registry.addResourceHandler("/uploads/**")
-                .addResourceLocations("file:/" + uploadPath + "/");
+                .addResourceLocations(uploadUri);
 
         // Map "/images/**" to static resources inside the jar
         registry.addResourceHandler("/images/**")

@@ -28,7 +28,7 @@ public class OpenRouterChatService {
     public String chat(String userMessage) {
 
         Map<String, Object> requestBody = Map.of(
-                "model", "mistralai/devstral-2512:free",
+                "model", "nvidia/nemotron-3-ultra-550b-a55b:free",
                 "messages", List.of(
                         Map.of(
                                 "role", "user",

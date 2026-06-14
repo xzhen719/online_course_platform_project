@@ -40,6 +40,9 @@ services:
     depends_on:
       # start db container first before backend container
       - db
+    volumes:
+      # Map the existing local 'uploads' directory to the container
+      - ./uploads:/app/uploads
     networks:
       - ocp-network
 
